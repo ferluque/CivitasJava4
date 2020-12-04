@@ -13,24 +13,32 @@ import java.util.ArrayList;
  */
 public class Casilla {
 
-    private int carcel;   ///////////No puede ser static no?
+    // Se mantiene en la superclase porque la casilla carcel es una casilla de
+    // descanso (De tipo Casilla)
+    // private int carcel; 
 
-    private float importe;
+    // Importe será exclusivo de la CasillaImpuesto
+    // private float importe;
     private String nombre;
 
-    private TipoCasilla tipo;
-    private TituloPropiedad tituloPropiedad;
-    private Sorpresa sorpresa;
-    private MazoSorpresas mazo;
+    // Se elimina el TipoCasilla
+    // private TipoCasilla tipo;
+    
+    // El TituloPropiedad será exclusivo de CasillaCalle
+    // private TituloPropiedad tituloPropiedad;
+    
+    // La Sorpresa y MazoSorpresas serán exclusivos de la CasillaSorpresa
+    // private Sorpresa sorpresa;
+    // private MazoSorpresas mazo;
 
     //DESCANSO
     Casilla(String nombre) {
-        init();
         this.nombre = nombre;
-        tipo = TipoCasilla.DESCANSO;
     }
 
     //CALLE
+    // A CasillaCalle
+    /*
     Casilla(TituloPropiedad titulo) {
         init();
         tituloPropiedad = titulo;
@@ -39,6 +47,7 @@ public class Casilla {
     }
 
     //IMPUESTO
+    // A CasillaImpuesto
     Casilla(float cantidad, String nombre) {
         init();
         this.nombre = nombre;
@@ -46,43 +55,58 @@ public class Casilla {
         tipo = TipoCasilla.IMPUESTO;
     }
 
-    //JUEZ
+    //JUEZç
+    // A CasillaJuez
+    // Se mantiene para que el constructor de CasillaJuez lo llame y asigne el
+    // valor carcel para la Casilla Carcel que sera de tipo descanso
+    
     Casilla(int numCasillaCarcel, String nombre) {
-        init();
         this.nombre = nombre;
-        tipo = TipoCasilla.JUEZ;
         carcel = numCasillaCarcel;
     }
 
+    
     //SORPRESA
+    // A CasillaSorpresa
     Casilla(MazoSorpresas mazo, String nombre) {
         init();
         this.nombre = nombre;
         tipo = TipoCasilla.SORPRESA;
         this.mazo = mazo;
     }
+    */
 
     public String getNombre() {
         return nombre;
     }
 
+    // A CasillaCalle
+    /*
     TituloPropiedad getTituloPropiedad() {
         return tituloPropiedad;
     }
+    */
 
-    private void informe(int actual, ArrayList<Jugador> todos) {
+    protected void informe(int actual, ArrayList<Jugador> todos) {
         Diario.getInstance().ocurreEvento("El jugador " + todos.get(actual).getNombre() + " ha caído en la casilla " + getNombre());
     }
-
+    
+    // SE elimina el método init()
+    /*
     private void init() {
         importe = 0;
         nombre = "";
     }
+    */
 
     public boolean jugadorCorrecto(int actual, ArrayList<Jugador> todos) {
         return (actual >= 0 && actual < todos.size());
     }
 
+    // DUDA QUÉ HACEMOS
+    // Se va a eliminar el método
+    // Debemos definirlo ahora en cada subclase
+    /*
     void recibeJugador(int actual, ArrayList<Jugador> todos) {
         switch (tipo) {
             case CALLE:
@@ -102,7 +126,7 @@ public class Casilla {
         }
     }
     
-
+    // Se va a CasillaCalle
     private void recibeJugador_calle(int actual, ArrayList<Jugador> todos) {
         if (jugadorCorrecto(actual, todos)) {
             informe (actual, todos);
@@ -135,13 +159,14 @@ public class Casilla {
             sorpresa.aplicarAJugador(actual, todos);
         }
     }
-
+    */
+    
     @Override
     public String toString() {
-        return "Casilla{" + "nombre=" + nombre + ", importe=" + importe +  ", tipo=" + tipo + ", tituloPropiedad=" + tituloPropiedad + ", sorpresa=" + sorpresa + ", mazo=" + mazo + '}';
+        return "Casilla{" + "nombre=" + nombre + '}';
     }
 
- 
+    /*
     public static void main(String args[]) {
         //Crea casilla DESCANSO
         Casilla descanso = new Casilla("Descanso");
@@ -164,5 +189,6 @@ public class Casilla {
         System.out.println(sorpresa.toString());
 
     }
+    */
 
 }
