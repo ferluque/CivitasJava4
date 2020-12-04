@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/ferluque/NetBeansProjects/CivitasJava4/src/civitas/Casilla.java</file>
-            <file>file:/home/ferluque/NetBeansProjects/CivitasJava4/src/civitas/CasillaCalle.java</file>
+            <file>file:/home/ferluque/NetBeansProjects/CivitasJava4/src/civitas/SorpresaPagarCobrar.java</file>
+            <file>file:/home/ferluque/NetBeansProjects/CivitasJava4/src/civitas/SorpresaPorJugador.java</file>
+            <file>file:/home/ferluque/NetBeansProjects/CivitasJava4/src/civitas/SorpresaSalirCarcel.java</file>
+            <file>file:/home/ferluque/NetBeansProjects/CivitasJava4/src/civitas/Sorpresa.java</file>
         </group>
     </open-files>
 </project-private>

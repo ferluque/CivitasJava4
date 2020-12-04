@@ -11,23 +11,35 @@ package civitas;
  */
 import java.util.ArrayList;
 
-public class Sorpresa {
-
+public abstract class Sorpresa {
+    
+    
+    
     private String texto;
     private int valor;
 
     private MazoSorpresas mazo;
     private TipoSorpresa tipo;
-    private Tablero tablero;
+    
+    // A SorpresaCarcel
+    // private Tablero tablero;
 
+    Sorpresa() {
+    }
+    
     //Sorpresa de cárcel
+    // A SorpresaCarcel
+    /*
     Sorpresa(TipoSorpresa tipo, Tablero tablero) {
         init();
         this.tipo = tipo;
         this.tablero = tablero;
     }
+    */
 
     //Sorpresa de cambio de casilla
+    // A SorpresairCasilla
+    /*
     Sorpresa(TipoSorpresa tipo, Tablero tablero, int valor, String texto) {
         init();
         this.tipo = tipo;
@@ -35,46 +47,30 @@ public class Sorpresa {
         this.valor = valor;
         this.texto = texto;
     }
+    */
 
     //Resto de sorpresas
+    /*
     Sorpresa(TipoSorpresa tipo, int valor, String texto) {
         init();
         this.tipo = tipo;
         this.valor = valor;
         this.texto = texto;
     }
+    */
 
     //Sorpresa que EVITA La cárcel
+    // A SorpresaSalirCarcel
+    /*
     Sorpresa(TipoSorpresa tipo, MazoSorpresas mazo) {
         init();
         this.tipo = tipo;
         this.mazo = mazo;
 
     }
-    
-    void aplicarAJugador(int actual, ArrayList<Jugador> todos) {
-        switch (tipo) {
-            case IRCARCEL:
-                aplicarAJugador_irCarcel(actual, todos);
-                break;
-            case IRCASILLA:
-                aplicarAJugador_irACasilla (actual, todos);
-                break;
-            case PAGARCOBRAR:
-                aplicarAJugador_pagarCobrar(actual, todos);
-                break;
-            case PORCASAHOTEL:
-                aplicarAJugador_porCasaHotel(actual, todos);
-                break;
-            case PORJUGADOR:
-                aplicarAJugador_porJugador(actual, todos);
-                break;
-            case SALIRCARCEL:
-                aplicarAJugador_salirCarcel(actual, todos);
-                break;                
-        }
-    }
-
+    */
+    /*
+    // A SorpresairCasilla
     private void aplicarAJugador_irACasilla(int actual, ArrayList<Jugador> todos) {
         if (jugadorCorrecto(actual, todos)) {
             informe (actual, todos);
@@ -85,6 +81,7 @@ public class Sorpresa {
         }
     }
 
+    // A SorpresaCarcel
     private void aplicarAJugador_irCarcel(int actual, ArrayList<Jugador> todos) {
         if (jugadorCorrecto(actual, todos)) {
             informe(actual, todos);
@@ -92,6 +89,7 @@ public class Sorpresa {
         }
     }
 
+    // A SorpresaPagarCobrar
     private void aplicarAJugador_pagarCobrar(int actual, ArrayList<Jugador> todos) {
         if (jugadorCorrecto(actual, todos)) {
             informe(actual, todos);
@@ -99,13 +97,15 @@ public class Sorpresa {
         }
     }
 
+    // A SorpresaPorCasaHotel
     private void aplicarAJugador_porCasaHotel(int actual, ArrayList<Jugador> todos) {
         if (jugadorCorrecto(actual, todos)) {
             informe(actual, todos);
             todos.get(actual).modificarSaldo(valor * (todos.get(actual).cantidadCasasHoteles()));
         }
     }
-
+    
+    // A SorpresaPorJugador
     private void aplicarAJugador_porJugador(int actual, ArrayList<Jugador> todos) {
         if (jugadorCorrecto(actual, todos)) {
             informe(actual, todos);
@@ -123,7 +123,8 @@ public class Sorpresa {
             cobrar.aplicarAJugador(actual, todos);
         }
     }
-
+    
+    // A SorpresaSalirCarcel
     private void aplicarAJugador_salirCarcel(int actual, ArrayList<Jugador> todos) {
         boolean tienen = false;
         if (jugadorCorrecto(actual, todos)) {
@@ -137,35 +138,37 @@ public class Sorpresa {
             }
         }
     }
-
-    private void informe(int actual, ArrayList<Jugador> todos) {
+    */
+    
+    protected void informe(int actual, ArrayList<Jugador> todos) {
         Diario.getInstance().ocurreEvento("Se aplica una sorpresa al jugador " + todos.get(actual).getNombre());
     }
 
-    private void init() {
-        valor = 1;
-        mazo = null;
-        tablero = null;
-    }
+    
 
     public boolean jugadorCorrecto(int actual, ArrayList<Jugador> todos) {
         return (actual >= 0 && actual < 4);
     }
-
+    
+    // A SorpresaSalirCarcel
+    /*
     void salirDelMazo() {
         if (tipo == TipoSorpresa.SALIRCARCEL)
             mazo.inhabilitarCartaEspecial(this);
     }
+    void usada() {
+        if (tipo == TipoSorpresa.SALIRCARCEL)
+            mazo.habilitarCartaEspecial(this);
+    }
+*/
 
     @Override
     public String toString() {
         return "Sorpresa{" + "texto=" + texto + ", valor=" + valor + ", tipo=" + tipo + ", tablero=" + tablero + '}';
     }
 
-    void usada() {
-        if (tipo == TipoSorpresa.SALIRCARCEL)
-            mazo.habilitarCartaEspecial(this);
-    }
+    
+    /*
     
     public static void main (String args[]) {
         ArrayList<Sorpresa> sorpresas = new ArrayList();
@@ -201,5 +204,6 @@ public class Sorpresa {
         System.out.println(todos.get(0).toString());
         
     }
+*/
 
 }

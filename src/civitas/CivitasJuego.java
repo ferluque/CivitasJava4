@@ -22,6 +22,8 @@ public class CivitasJuego {
     private EstadosJuego estado;
     private GestorEstados gestorEstados;
 
+    
+    // INtroducir modificaciones
     private void avanzaJugador() {
         Jugador jugadorActual = jugadores.get(indiceJugadorActual);
         int posicionActual = jugadorActual.getNumCasillaActual();
@@ -30,7 +32,12 @@ public class CivitasJuego {
         Casilla casilla = tablero.getCasilla(posicionNueva);
         contabilizarPasosPorSalida(jugadorActual);
         jugadorActual.moverACasilla(posicionNueva);
+        
+        // Simplemente llama al recibeJugador de cada clase por ser Override y
+        // cada casilla ser de cada tipo distinto.
+        // Sólo ejecutarán el método Casilla::recibeJugador las casillas de descanso
         casilla.recibeJugador(indiceJugadorActual, jugadores);
+        
         contabilizarPasosPorSalida(jugadorActual);
     }
 
@@ -54,10 +61,10 @@ public class CivitasJuego {
         inicializarTablero(mazo);
     }
 
-    
+    // Introducir modificaciones
     public boolean comprar() {
         Jugador jugadorActual = jugadores.get(indiceJugadorActual);
-        Casilla casilla = tablero.getCasilla(jugadorActual.getNumCasillaActual());
+        CasillaCalle casilla = (CasillaCalle)tablero.getCasilla(jugadorActual.getNumCasillaActual());
         TituloPropiedad titulo = casilla.getTituloPropiedad();
         return jugadorActual.comprar(titulo);
     }
@@ -115,6 +122,7 @@ public class CivitasJuego {
 
     }
 
+    // Introducir modificaciones
     private void inicializarTablero(MazoSorpresas mazo) {
         //Añadimos 19 casillas, que más laque se añade al construir el objeto (Casilla de salida) harán 20
         tablero.aniadeCasilla(new Casilla(new TituloPropiedad("Calle Ganivet", (float) 8, (float) 1.1, (float) 35, (float) 50, (float) 10)));

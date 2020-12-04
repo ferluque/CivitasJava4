@@ -19,6 +19,7 @@ public class CasillaImpuesto extends Casilla {
         importe = cantidad;
     }
     
+    @Override
     void recibeJugador (int actual, ArrayList<Jugador> todos) {
         if (super.jugadorCorrecto(actual, todos)) {
             super.informe(actual, todos);

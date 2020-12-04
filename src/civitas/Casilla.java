@@ -102,6 +102,10 @@ public class Casilla {
     public boolean jugadorCorrecto(int actual, ArrayList<Jugador> todos) {
         return (actual >= 0 && actual < todos.size());
     }
+    
+    void recibeJugador (int actual, ArrayList<Jugador> todos) {
+        informe(actual, todos);
+    }
 
     // DUDA QUÉ HACEMOS
     // Se va a eliminar el método

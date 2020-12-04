@@ -20,6 +20,7 @@ public class CasillaSorpresa extends Casilla {
         this.mazo = mazo;
     }
     
+    @Override
     void recibeJugador (int actual, ArrayList<Jugador> todos) {
         if (super.jugadorCorrecto(actual, todos)) {
             sorpresa = mazo.siguiente();

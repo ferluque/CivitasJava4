@@ -19,6 +19,7 @@ public class CasillaJuez extends Casilla {
         carcel = numCasillaCarcel;
     }
     
+    @Override
     void recibeJugador (int actual, ArrayList<Jugador> todos) {
         if (super.jugadorCorrecto(actual, todos)) {
             super.informe(actual, todos);
